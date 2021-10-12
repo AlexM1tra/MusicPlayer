@@ -6,3 +6,12 @@ H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Properties.Reso
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.GenerateResource.Cache
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.exe
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.pdb
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\Interop.WMPLib.dll
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\AxInterop.WMPLib.dll
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.ResolveComReference.cache
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\Interop.WMPLib.dll
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\AxInterop.WMPLib.dll
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Form1.resources
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.dll
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.pdb
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.xml
