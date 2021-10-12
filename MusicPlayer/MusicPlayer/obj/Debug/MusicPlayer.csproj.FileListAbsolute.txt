@@ -1,0 +1,8 @@
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\MusicPlayer.exe.config
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\MusicPlayer.exe
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\MusicPlayer.pdb
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csprojResolveAssemblyReference.cache
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Properties.Resources.resources
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.GenerateResource.Cache
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.exe
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.pdb
