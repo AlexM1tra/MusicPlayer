@@ -28,41 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.albumPicture = new System.Windows.Forms.PictureBox();
-            this.albumName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.albumPicture)).BeginInit();
+            this.albumArt = new System.Windows.Forms.PictureBox();
+            this.albumTitle = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.albumArt)).BeginInit();
             this.SuspendLayout();
             // 
-            // albumPicture
+            // albumArt
             // 
-            this.albumPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.albumPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.albumPicture.Location = new System.Drawing.Point(0, 0);
-            this.albumPicture.Name = "albumPicture";
-            this.albumPicture.Size = new System.Drawing.Size(150, 150);
-            this.albumPicture.TabIndex = 0;
-            this.albumPicture.TabStop = false;
+            this.albumArt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.albumArt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.albumArt.Location = new System.Drawing.Point(5, 5);
+            this.albumArt.Name = "albumArt";
+            this.albumArt.Size = new System.Drawing.Size(140, 141);
+            this.albumArt.TabIndex = 0;
+            this.albumArt.TabStop = false;
             // 
-            // albumName
+            // albumTitle
             // 
-            this.albumName.AutoSize = true;
-            this.albumName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.albumName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.albumName.Location = new System.Drawing.Point(0, 150);
-            this.albumName.Name = "albumName";
-            this.albumName.Size = new System.Drawing.Size(100, 20);
-            this.albumName.TabIndex = 1;
-            this.albumName.Text = "Album Name";
+            this.albumTitle.BackColor = System.Drawing.Color.White;
+            this.albumTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.albumTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.albumTitle.Enabled = false;
+            this.albumTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.albumTitle.Location = new System.Drawing.Point(5, 146);
+            this.albumTitle.Name = "albumTitle";
+            this.albumTitle.ReadOnly = true;
+            this.albumTitle.Size = new System.Drawing.Size(140, 19);
+            this.albumTitle.TabIndex = 1;
+            this.albumTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Album
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.albumPicture);
-            this.Controls.Add(this.albumName);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.albumArt);
+            this.Controls.Add(this.albumTitle);
             this.Name = "Album";
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.Size = new System.Drawing.Size(150, 170);
-            ((System.ComponentModel.ISupportInitialize)(this.albumPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumArt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,7 +75,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox albumPicture;
-        private System.Windows.Forms.Label albumName;
+        private System.Windows.Forms.PictureBox albumArt;
+        private System.Windows.Forms.TextBox albumTitle;
     }
 }

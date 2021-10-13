@@ -15,3 +15,5 @@ H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Form1.resources
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.dll
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.pdb
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.xml
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Album.resources
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.AlbumInfo.resources
