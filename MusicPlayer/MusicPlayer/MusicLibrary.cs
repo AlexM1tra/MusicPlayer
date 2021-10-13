@@ -14,6 +14,7 @@ namespace MusicPlayer
         private static MusicLibrary library;
 
         private Dictionary<string, Dictionary<string, List<string>>> data;
+        private List<string> songs;
 
         private MusicLibrary(Dictionary<string, Dictionary<string, List<string>>> library)
         {
@@ -26,8 +27,15 @@ namespace MusicPlayer
             return filenameArray[filenameArray.Length - 1];
         }
 
+        public static string withoutPathOrExtension(string filename)
+        {
+            string noPath = withoutPath(filename);
+            return noPath.Substring(0, noPath.LastIndexOf('.'));
+        }
+
         public static void readLibrary(string path)
         {
+            var songList = new List<string>();
             var songData = new Dictionary<string, Dictionary<string, List<string>>>();
             if (Directory.Exists(path))
             {
@@ -49,6 +57,7 @@ namespace MusicPlayer
                                     songData[artistWithoutPath][albumWithoutPath] = new List<string>();
                                     foreach (var song in songs)
                                     {
+                                        songList.Add(song);
                                         songData[artistWithoutPath][albumWithoutPath].Add(song);
                                     }
                                 }
@@ -58,6 +67,7 @@ namespace MusicPlayer
                 }
             }
             MusicLibrary.library = new MusicLibrary(songData);
+            MusicLibrary.library.songs = songList;
         }
 
         public static MusicLibrary Get()
@@ -93,6 +103,16 @@ namespace MusicPlayer
         public List<string> getSongs(string artist, string album)
         {
             return this.data[artist][album];
+        }
+
+        public List<string> getAllSongs()
+        {
+            return this.songs.Select((song) => withoutPathOrExtension(song)).ToList();
+        }
+
+        public List<string> getSongList()
+        {
+            return this.songs;
         }
     }
 }

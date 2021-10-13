@@ -36,15 +36,42 @@ namespace MusicPlayer
             this.songs = songs;
             foreach (string song in songs)
             {
-                listBoxSongs.Items.Add(MusicLibrary.withoutPath(song));
+                listBoxSongs.Items.Add(MusicLibrary.withoutPathOrExtension(song));
             }
             this.songCallback = songCallback;
             buttonPlay.Click += new EventHandler((object sender, EventArgs e) => albumCallback(albumId, false));
             buttonShuffle.Click += new EventHandler((object sender, EventArgs e) => albumCallback(albumId, true));
             albumCover.BackgroundImage = artwork;
+            setColours(new Bitmap(artwork).GetPixel(10, 10));
         }
 
         public string AlbumId() => albumId;
+
+        private void setColours(Color backColor)
+        {
+            if (backColor.A < 255)
+            {
+                this.ForeColor = Color.Black;
+                listBoxSongs.ForeColor = Color.Black;
+                textBoxTitle.ForeColor = Color.Black;
+                return;
+            }
+
+            this.BackColor = backColor;
+            listBoxSongs.BackColor = backColor;
+            textBoxTitle.BackColor = backColor;
+            if ((backColor.R * 0.299 + backColor.G * 0.587 + backColor.B * 0.114) > 186) {
+                this.ForeColor = Color.Black;
+                listBoxSongs.ForeColor = Color.Black;
+                textBoxTitle.ForeColor = Color.Black;
+            }
+            else
+            {
+                this.ForeColor = Color.White;
+                listBoxSongs.ForeColor = Color.White;
+                textBoxTitle.ForeColor = Color.White;
+            }
+        }
 
         private void listBoxSongs_SelectedIndexChanged(object sender, EventArgs e)
         {

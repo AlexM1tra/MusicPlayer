@@ -134,5 +134,17 @@
   <ItemGroup>
     <None Include="Resources\album_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\controls_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\library_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

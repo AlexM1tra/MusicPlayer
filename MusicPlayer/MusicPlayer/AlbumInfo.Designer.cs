@@ -28,27 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.albumCover = new System.Windows.Forms.PictureBox();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.panelAlbumPlayControls = new System.Windows.Forms.Panel();
             this.buttonPlay = new System.Windows.Forms.Button();
-            this.buttonShuffle = new System.Windows.Forms.Button();
             this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.albumCover)).BeginInit();
+            this.buttonShuffle = new System.Windows.Forms.Button();
+            this.albumCover = new System.Windows.Forms.PictureBox();
             this.panelHeader.SuspendLayout();
             this.panelAlbumPlayControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.albumCover)).BeginInit();
             this.SuspendLayout();
-            // 
-            // albumCover
-            // 
-            this.albumCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.albumCover.Dock = System.Windows.Forms.DockStyle.Left;
-            this.albumCover.Location = new System.Drawing.Point(0, 0);
-            this.albumCover.Name = "albumCover";
-            this.albumCover.Size = new System.Drawing.Size(60, 65);
-            this.albumCover.TabIndex = 0;
-            this.albumCover.TabStop = false;
             // 
             // panelHeader
             // 
@@ -73,25 +63,15 @@
             // 
             // buttonPlay
             // 
+            this.buttonPlay.BackgroundImage = global::MusicPlayer.Properties.Resources.play_icon;
+            this.buttonPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonPlay.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPlay.Location = new System.Drawing.Point(0, 0);
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(36, 32);
             this.buttonPlay.TabIndex = 0;
-            this.buttonPlay.Text = "▲";
             this.buttonPlay.UseVisualStyleBackColor = true;
-            // 
-            // buttonShuffle
-            // 
-            this.buttonShuffle.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonShuffle.Location = new System.Drawing.Point(0, 33);
-            this.buttonShuffle.Name = "buttonShuffle";
-            this.buttonShuffle.Size = new System.Drawing.Size(36, 32);
-            this.buttonShuffle.TabIndex = 1;
-            this.buttonShuffle.Text = "→";
-            this.buttonShuffle.UseVisualStyleBackColor = true;
             // 
             // listBoxSongs
             // 
@@ -112,6 +92,28 @@
             this.textBoxTitle.Size = new System.Drawing.Size(106, 65);
             this.textBoxTitle.TabIndex = 2;
             // 
+            // buttonShuffle
+            // 
+            this.buttonShuffle.BackgroundImage = global::MusicPlayer.Properties.Resources.shuffle_icon;
+            this.buttonShuffle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonShuffle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonShuffle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShuffle.Location = new System.Drawing.Point(0, 33);
+            this.buttonShuffle.Name = "buttonShuffle";
+            this.buttonShuffle.Size = new System.Drawing.Size(36, 32);
+            this.buttonShuffle.TabIndex = 1;
+            this.buttonShuffle.UseVisualStyleBackColor = true;
+            // 
+            // albumCover
+            // 
+            this.albumCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.albumCover.Dock = System.Windows.Forms.DockStyle.Left;
+            this.albumCover.Location = new System.Drawing.Point(0, 0);
+            this.albumCover.Name = "albumCover";
+            this.albumCover.Size = new System.Drawing.Size(60, 65);
+            this.albumCover.TabIndex = 0;
+            this.albumCover.TabStop = false;
+            // 
             // AlbumInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,10 +123,10 @@
             this.Controls.Add(this.panelHeader);
             this.Name = "AlbumInfo";
             this.Size = new System.Drawing.Size(202, 239);
-            ((System.ComponentModel.ISupportInitialize)(this.albumCover)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelAlbumPlayControls.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.albumCover)).EndInit();
             this.ResumeLayout(false);
 
         }
