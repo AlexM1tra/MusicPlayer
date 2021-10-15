@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MusicPlayer
 {
@@ -31,6 +27,18 @@ namespace MusicPlayer
         {
             string noPath = withoutPath(filename);
             return noPath.Substring(0, noPath.LastIndexOf('.'));
+        }
+
+        public static string artistFromPath(string filename)
+        {
+            string[] filenameArray = filename.Split('\\');
+            return filenameArray[filenameArray.Length - 3];
+        }
+
+        public static string albumFromPath(string filename)
+        {
+            string[] filenameArray = filename.Split('\\');
+            return filenameArray[filenameArray.Length - 2];
         }
 
         public static void readLibrary(string path)

@@ -146,5 +146,32 @@
   <ItemGroup>
     <None Include="Resources\shuffle_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_track_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_track_icon_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_icon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause_icon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_track_icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_track_icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\library_icon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle_icon_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\music_note_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,7 +31,7 @@ namespace MusicPlayer
             Image artwork)
         {
             InitializeComponent();
-            textBoxTitle.Text = albumName + "\n" + artistName;
+            textBoxTitle.Text = albumName + Environment.NewLine + artistName;
             this.albumId = artistName + "\\" + albumName;
             this.songs = songs;
             foreach (string song in songs)
@@ -54,6 +54,8 @@ namespace MusicPlayer
                 this.ForeColor = Color.Black;
                 listBoxSongs.ForeColor = Color.Black;
                 textBoxTitle.ForeColor = Color.Black;
+                buttonPlay.BackgroundImage = Properties.Resources.play_icon;
+                buttonShuffle.BackgroundImage = Properties.Resources.shuffle_icon;
                 return;
             }
 
@@ -64,12 +66,16 @@ namespace MusicPlayer
                 this.ForeColor = Color.Black;
                 listBoxSongs.ForeColor = Color.Black;
                 textBoxTitle.ForeColor = Color.Black;
+                buttonPlay.BackgroundImage = Properties.Resources.play_icon;
+                buttonShuffle.BackgroundImage = Properties.Resources.shuffle_icon;
             }
             else
             {
                 this.ForeColor = Color.White;
                 listBoxSongs.ForeColor = Color.White;
                 textBoxTitle.ForeColor = Color.White;
+                buttonPlay.BackgroundImage = Properties.Resources.play_icon_light;
+                buttonShuffle.BackgroundImage = Properties.Resources.shuffle_icon_light;
             }
         }
 
