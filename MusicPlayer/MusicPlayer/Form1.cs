@@ -16,7 +16,7 @@ using WMPLib;
  * Play queue (change listbox logic)
  * ---------------------- Finish search
  * Idle mode
- * Song scrubbing
+ * ---------------------- Song scrubbing
  * ---------------------- Fix white circle
  * ---------------------- Library Caching
  */
@@ -24,6 +24,7 @@ namespace MusicPlayer
 {
     public partial class Form1 : Form
     {
+        private const double PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286;
         private readonly string LIBRARY_PATH = "Library\\";
         private Graphics g;
         private Pen darkPen;
@@ -44,6 +45,7 @@ namespace MusicPlayer
         {
             InitializeComponent();
             panelControls.Paint += new PaintEventHandler(this.panelControls_Paint);
+            panelControls.MouseDown += new MouseEventHandler(PanelControlsMouseDown);
             mediaPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(OnPlayStateChange);
             textBoxSearch.KeyDown += new KeyEventHandler(OnSearchKeyDown);
             MusicLibrary.readLibrary(LIBRARY_PATH);
@@ -81,6 +83,52 @@ namespace MusicPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        } 
+
+        private double calculateAngleOfVector(Point vector)
+        {
+            if (vector.X == 0 && vector.Y == 0)
+            {
+                return 0;
+            }
+            else if (vector.Y == 0)
+            {
+                return vector.X > 0 ? 90 : 270;
+            } else if (vector.X == 0)
+            {
+                return vector.Y >= 0 ? 0 : 180;
+            }
+            double angle = Math.Atan2(Math.Abs(vector.X), Math.Abs(vector.Y)) * 180;
+            angle = angle / PI;
+            angle = angle < 0 ? angle + 180 : angle;
+            if (vector.X > 0 && vector.Y < 0)
+            {
+                return angle;
+            } else if (vector.X > 0 && vector.Y > 0)
+            {
+                return 180 - angle;
+            } else if (vector.X < 0 && vector.Y < 0)
+            {
+                return 360 - angle; 
+            } else if (vector.X < 0 && vector.Y > 0)
+            {
+                return 180 + angle;
+            }
+            return 0;
+        }
+
+        private void PanelControlsMouseDown(object sender, MouseEventArgs e)
+        {
+            Point center = new Point(panelControls.Width / 2, panelControls.Height / 2);
+            int radius = Math.Min(panelControls.Width, panelControls.Height) * 4 / 14;
+            Rectangle innerRect = new Rectangle(center.X - radius + 12, center.Y - radius + 12, (2 * radius) - 24, (2 * radius) - 24);
+            double xSquaredPlusYSquared = (e.X - center.X) * (e.X - center.X) + (e.Y - center.Y) * (e.Y - center.Y);
+            if (xSquaredPlusYSquared < ((radius + 20) * (radius + 20)))
+            {
+                Point newVector = new Point(e.X - center.X, e.Y - center.Y);
+                mediaPlayer.Ctlcontrols.currentPosition = calculateAngleOfVector(newVector) / 360 * mediaPlayer.Ctlcontrols.currentItem.duration;
+                drawBackground();
+            }
         }
 
         private string onlyAlpha(string text)
@@ -129,7 +177,7 @@ namespace MusicPlayer
             }
             if (oldArtistAndAlbum != album.Artist() + "\\" + album.Title())
             {
-                AlbumInfo albumInfo = new AlbumInfo(album.Title(), album.Artist(), MusicLibrary.Get().getSongs(album.Artist(), album.Title()), playSong, playAlbum, album.AlbumArtwork());
+                AlbumInfo albumInfo = new AlbumInfo(album.Title(), album.Artist(), MusicLibrary.Get().getSongs(album.Artist(), album.Title()), playSoloSong, playAlbum, album.AlbumArtwork());
                 albumInfo.Dock = DockStyle.Fill;
                 listBoxMediaType.Visible = false;
                 panelLibraryRightMenu.Controls.Add(albumInfo);
@@ -151,17 +199,16 @@ namespace MusicPlayer
         private void drawBackground()
         {
             this.g.Clear(panelControls.BackColor);
-
-            if (this.currentBackground != null)
-            {
-                panelControls.BackgroundImageLayout = ImageLayout.Center;
-                Point backgroundPoint = new Point((panelControls.Width - this.currentBackground.Width) / 2, (panelControls.Height - this.currentBackground.Height) / 2);
-                panelControls.BackgroundImage = ImageResizer.CropCenteredImage(panelControls, this.currentBackground);
-            }
-            else
+            if (this.currentBackground == null)
             {
                 panelControls.BackgroundImageLayout = ImageLayout.Zoom;
                 panelControls.BackgroundImage = Properties.Resources.music_note_icon;
+            }
+            else
+            {
+                panelControls.BackgroundImageLayout = ImageLayout.Center;
+                panelControls.BackgroundImage = this.currentBackground;//ImageResizer.CropCenteredImage(panelControls, this.currentBackground);
+                panelControls.Refresh();
             }
         }
 
@@ -180,6 +227,12 @@ namespace MusicPlayer
                     this.g.DrawArc(this.playPauseIsLight ? this.lightPen : this.darkPen, this.progressRect, -90, angle);
                 }
             }
+        }
+
+        private void playSoloSong(string filepath)
+        {
+            playQueue.Clear();
+            playSong(filepath);
         }
 
         private void playSong(string filepath)

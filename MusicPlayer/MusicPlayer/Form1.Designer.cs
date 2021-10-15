@@ -37,17 +37,17 @@
             this.panelLibraryRightMenu = new System.Windows.Forms.Panel();
             this.listBoxMediaType = new System.Windows.Forms.ListBox();
             this.panelLibraryTopBar = new System.Windows.Forms.Panel();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonControls = new System.Windows.Forms.Button();
             this.panelControls = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.labelSongName = new System.Windows.Forms.Label();
             this.labelArtistAlbum = new System.Windows.Forms.Label();
+            this.labelSongName = new System.Windows.Forms.Label();
             this.buttonPrevious = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonLibrary = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonControls = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.panelLibrary.SuspendLayout();
             this.panelLibraryRightMenu.SuspendLayout();
@@ -134,6 +134,19 @@
             this.panelLibraryTopBar.Size = new System.Drawing.Size(432, 36);
             this.panelLibraryTopBar.TabIndex = 0;
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.BackgroundImage = global::MusicPlayer.Properties.Resources.search_icon;
+            this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonSearch.FlatAppearance.BorderSize = 0;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Location = new System.Drawing.Point(346, 8);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(20, 20);
+            this.buttonSearch.TabIndex = 2;
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
             // textBoxSearch
             // 
             this.textBoxSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -143,6 +156,20 @@
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(161, 26);
             this.textBoxSearch.TabIndex = 1;
+            // 
+            // buttonControls
+            // 
+            this.buttonControls.BackgroundImage = global::MusicPlayer.Properties.Resources.controls_icon;
+            this.buttonControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonControls.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonControls.FlatAppearance.BorderSize = 0;
+            this.buttonControls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonControls.Location = new System.Drawing.Point(396, 0);
+            this.buttonControls.Name = "buttonControls";
+            this.buttonControls.Size = new System.Drawing.Size(36, 36);
+            this.buttonControls.TabIndex = 0;
+            this.buttonControls.UseVisualStyleBackColor = true;
+            this.buttonControls.Click += new System.EventHandler(this.buttonControls_Click);
             // 
             // panelControls
             // 
@@ -158,14 +185,18 @@
             this.panelControls.Size = new System.Drawing.Size(418, 253);
             this.panelControls.TabIndex = 2;
             // 
-            // timer1
+            // labelArtistAlbum
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.labelArtistAlbum.AutoSize = true;
+            this.labelArtistAlbum.BackColor = System.Drawing.Color.Transparent;
+            this.labelArtistAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArtistAlbum.ForeColor = System.Drawing.Color.White;
+            this.labelArtistAlbum.Location = new System.Drawing.Point(165, 190);
+            this.labelArtistAlbum.Name = "labelArtistAlbum";
+            this.labelArtistAlbum.Size = new System.Drawing.Size(104, 20);
+            this.labelArtistAlbum.TabIndex = 4;
+            this.labelArtistAlbum.Text = "Artist - Album";
+            this.labelArtistAlbum.Visible = false;
             // 
             // labelSongName
             // 
@@ -180,19 +211,6 @@
             this.labelSongName.Text = "Song Name";
             this.labelSongName.Visible = false;
             // 
-            // labelArtistAlbum
-            // 
-            this.labelArtistAlbum.AutoSize = true;
-            this.labelArtistAlbum.BackColor = System.Drawing.Color.Transparent;
-            this.labelArtistAlbum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArtistAlbum.ForeColor = System.Drawing.Color.White;
-            this.labelArtistAlbum.Location = new System.Drawing.Point(165, 190);
-            this.labelArtistAlbum.Name = "labelArtistAlbum";
-            this.labelArtistAlbum.Size = new System.Drawing.Size(104, 20);
-            this.labelArtistAlbum.TabIndex = 4;
-            this.labelArtistAlbum.Text = "Artist - Album";
-            this.labelArtistAlbum.Visible = false;
-            // 
             // buttonPrevious
             // 
             this.buttonPrevious.BackColor = System.Drawing.Color.Transparent;
@@ -202,6 +220,7 @@
             this.buttonPrevious.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonPrevious.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrevious.ForeColor = System.Drawing.Color.White;
             this.buttonPrevious.Location = new System.Drawing.Point(48, 86);
             this.buttonPrevious.Name = "buttonPrevious";
             this.buttonPrevious.Size = new System.Drawing.Size(75, 79);
@@ -218,6 +237,7 @@
             this.buttonNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNext.ForeColor = System.Drawing.Color.White;
             this.buttonNext.Location = new System.Drawing.Point(307, 86);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 79);
@@ -241,32 +261,14 @@
             this.buttonLibrary.UseVisualStyleBackColor = false;
             this.buttonLibrary.Click += new System.EventHandler(this.buttonLibrary_Click);
             // 
-            // buttonSearch
+            // timer1
             // 
-            this.buttonSearch.BackgroundImage = global::MusicPlayer.Properties.Resources.search_icon;
-            this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSearch.FlatAppearance.BorderSize = 0;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Location = new System.Drawing.Point(346, 8);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(20, 20);
-            this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // buttonControls
+            // openFileDialog1
             // 
-            this.buttonControls.BackgroundImage = global::MusicPlayer.Properties.Resources.controls_icon;
-            this.buttonControls.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonControls.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonControls.FlatAppearance.BorderSize = 0;
-            this.buttonControls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonControls.Location = new System.Drawing.Point(396, 0);
-            this.buttonControls.Name = "buttonControls";
-            this.buttonControls.Size = new System.Drawing.Size(36, 36);
-            this.buttonControls.TabIndex = 0;
-            this.buttonControls.UseVisualStyleBackColor = true;
-            this.buttonControls.Click += new System.EventHandler(this.buttonControls_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
