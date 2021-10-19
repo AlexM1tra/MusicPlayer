@@ -27,7 +27,7 @@ namespace MusicPlayer
             string artistName, 
             List<string> songs, 
             Action<string> songCallback, 
-            Action<string, bool> albumCallback, 
+            Action<string, bool> albumCallback,
             Image artwork)
         {
             InitializeComponent();
@@ -41,11 +41,26 @@ namespace MusicPlayer
             this.songCallback = songCallback;
             buttonPlay.Click += new EventHandler((object sender, EventArgs e) => albumCallback(albumId, false));
             buttonShuffle.Click += new EventHandler((object sender, EventArgs e) => albumCallback(albumId, true));
+            listBoxSongs.DoubleClick += new EventHandler((sender, e) => songCallback(songs[listBoxSongs.SelectedIndex]));
             albumCover.BackgroundImage = artwork;
             setColours(new Bitmap(artwork).GetPixel(10, 10));
         }
 
         public string AlbumId() => albumId;
+
+        public void setContextMenuStrip(ContextMenuStrip contextMenu)
+        {
+            listBoxSongs.ContextMenuStrip = contextMenu;
+        }
+
+        public string getSelectedSong()
+        {
+            if (listBoxSongs.SelectedIndex == -1)
+            {
+                return null;
+            }
+            return songs[listBoxSongs.SelectedIndex];
+        }
 
         private void setColours(Color backColor)
         {
@@ -81,10 +96,6 @@ namespace MusicPlayer
 
         private void listBoxSongs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.songCallback != null)
-            {
-                songCallback(songs[listBoxSongs.SelectedIndex]);
-            }
         }
     }
 }

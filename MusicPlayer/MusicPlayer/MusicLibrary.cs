@@ -12,33 +12,9 @@ namespace MusicPlayer
         private Dictionary<string, Dictionary<string, List<string>>> data;
         private List<string> songs;
 
-        private MusicLibrary(Dictionary<string, Dictionary<string, List<string>>> library)
+        public static MusicLibrary Get()
         {
-            this.data = library;
-        }
-
-        public static string withoutPath(string filename)
-        {
-            string[] filenameArray = filename.Split('\\');
-            return filenameArray[filenameArray.Length - 1];
-        }
-
-        public static string withoutPathOrExtension(string filename)
-        {
-            string noPath = withoutPath(filename);
-            return noPath.Substring(0, noPath.LastIndexOf('.'));
-        }
-
-        public static string artistFromPath(string filename)
-        {
-            string[] filenameArray = filename.Split('\\');
-            return filenameArray[filenameArray.Length - 3];
-        }
-
-        public static string albumFromPath(string filename)
-        {
-            string[] filenameArray = filename.Split('\\');
-            return filenameArray[filenameArray.Length - 2];
+            return library;
         }
 
         public static void readLibrary(string path)
@@ -78,9 +54,41 @@ namespace MusicPlayer
             MusicLibrary.library.songs = songList;
         }
 
-        public static MusicLibrary Get()
+        public static string withoutPath(string filename)
         {
-            return library;
+            string[] filenameArray = filename.Split('\\');
+            return filenameArray[filenameArray.Length - 1];
+        }
+
+        public static string withoutPathOrExtension(string filename)
+        {
+            string noPath = withoutPath(filename);
+            return noPath.Substring(0, noPath.LastIndexOf('.'));
+        }
+
+        public static string onlyAlpha(string text)
+        {
+            string output = "";
+            foreach (char c in text)
+            {
+                if (!"0123456789".Contains(c.ToString()))
+                {
+                    output += c;
+                }
+            }
+            return output.TrimStart();
+        }
+
+        public static string artistFromPath(string filename)
+        {
+            string[] filenameArray = filename.Split('\\');
+            return filenameArray[filenameArray.Length - 3];
+        }
+
+        public static string albumFromPath(string filename)
+        {
+            string[] filenameArray = filename.Split('\\');
+            return filenameArray[filenameArray.Length - 2];
         }
 
         public List<Album> getAlbums()
@@ -98,7 +106,7 @@ namespace MusicPlayer
                         {
                             if (img != null)
                             {
-                                albumArt = ImageResizer.ResizeImage(Image.FromStream(new MemoryStream((byte[])(img.Data.Data))), 200);
+                                albumArt = ImageProcessor.ResizeImage(Image.FromStream(new MemoryStream((byte[])(img.Data.Data))), 200);
                             }
                         }
                         albums.Add(new Album(albumArt, album.Key, artist.Key));
@@ -121,6 +129,11 @@ namespace MusicPlayer
         public List<string> getSongList()
         {
             return this.songs;
+        }
+
+        private MusicLibrary(Dictionary<string, Dictionary<string, List<string>>> library)
+        {
+            this.data = library;
         }
     }
 }

@@ -32,8 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panelLibrary = new System.Windows.Forms.Panel();
-            this.listBoxSongs = new System.Windows.Forms.ListBox();
+            this.panelLibraryContent = new System.Windows.Forms.Panel();
             this.panelLibraryAlbums = new System.Windows.Forms.FlowLayoutPanel();
+            this.playlistsView1 = new MusicPlayer.PlaylistsView();
+            this.listBoxSongs = new System.Windows.Forms.ListBox();
             this.panelLibraryRightMenu = new System.Windows.Forms.Panel();
             this.listBoxMediaType = new System.Windows.Forms.ListBox();
             this.panelLibraryTopBar = new System.Windows.Forms.Panel();
@@ -48,11 +50,19 @@
             this.buttonLibrary = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.panelIdle = new System.Windows.Forms.Panel();
+            this.contextMenuSongs = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addToPlayQueueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuAlbumInfo = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addToPlayQueueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.panelLibrary.SuspendLayout();
+            this.panelLibraryContent.SuspendLayout();
             this.panelLibraryRightMenu.SuspendLayout();
             this.panelLibraryTopBar.SuspendLayout();
             this.panelControls.SuspendLayout();
+            this.contextMenuSongs.SuspendLayout();
+            this.contextMenuAlbumInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // mediaPlayer
@@ -68,42 +78,63 @@
             // 
             // panelLibrary
             // 
-            this.panelLibrary.Controls.Add(this.listBoxSongs);
-            this.panelLibrary.Controls.Add(this.panelLibraryAlbums);
+            this.panelLibrary.Controls.Add(this.panelLibraryContent);
             this.panelLibrary.Controls.Add(this.panelLibraryRightMenu);
             this.panelLibrary.Controls.Add(this.panelLibraryTopBar);
-            this.panelLibrary.Location = new System.Drawing.Point(2, 0);
+            this.panelLibrary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLibrary.Location = new System.Drawing.Point(0, 0);
             this.panelLibrary.Name = "panelLibrary";
-            this.panelLibrary.Size = new System.Drawing.Size(432, 253);
+            this.panelLibrary.Size = new System.Drawing.Size(820, 486);
             this.panelLibrary.TabIndex = 1;
             // 
-            // listBoxSongs
+            // panelLibraryContent
             // 
-            this.listBoxSongs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxSongs.FormattingEnabled = true;
-            this.listBoxSongs.Location = new System.Drawing.Point(0, 36);
-            this.listBoxSongs.Name = "listBoxSongs";
-            this.listBoxSongs.Size = new System.Drawing.Size(259, 217);
-            this.listBoxSongs.TabIndex = 3;
-            this.listBoxSongs.Visible = false;
-            this.listBoxSongs.SelectedIndexChanged += new System.EventHandler(this.listBoxSongs_SelectedIndexChanged);
+            this.panelLibraryContent.Controls.Add(this.panelLibraryAlbums);
+            this.panelLibraryContent.Controls.Add(this.playlistsView1);
+            this.panelLibraryContent.Controls.Add(this.listBoxSongs);
+            this.panelLibraryContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLibraryContent.Location = new System.Drawing.Point(0, 36);
+            this.panelLibraryContent.Name = "panelLibraryContent";
+            this.panelLibraryContent.Size = new System.Drawing.Size(647, 450);
+            this.panelLibraryContent.TabIndex = 2;
             // 
             // panelLibraryAlbums
             // 
             this.panelLibraryAlbums.AutoScroll = true;
             this.panelLibraryAlbums.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLibraryAlbums.Location = new System.Drawing.Point(0, 36);
+            this.panelLibraryAlbums.Location = new System.Drawing.Point(0, 0);
             this.panelLibraryAlbums.Name = "panelLibraryAlbums";
-            this.panelLibraryAlbums.Size = new System.Drawing.Size(259, 217);
+            this.panelLibraryAlbums.Size = new System.Drawing.Size(647, 450);
             this.panelLibraryAlbums.TabIndex = 2;
+            // 
+            // playlistsView1
+            // 
+            this.playlistsView1.BackColor = System.Drawing.Color.White;
+            this.playlistsView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playlistsView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playlistsView1.Location = new System.Drawing.Point(0, 0);
+            this.playlistsView1.Name = "playlistsView1";
+            this.playlistsView1.Size = new System.Drawing.Size(647, 450);
+            this.playlistsView1.TabIndex = 4;
+            // 
+            // listBoxSongs
+            // 
+            this.listBoxSongs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxSongs.FormattingEnabled = true;
+            this.listBoxSongs.Location = new System.Drawing.Point(0, 0);
+            this.listBoxSongs.Name = "listBoxSongs";
+            this.listBoxSongs.Size = new System.Drawing.Size(647, 450);
+            this.listBoxSongs.TabIndex = 3;
+            this.listBoxSongs.Visible = false;
+            this.listBoxSongs.SelectedIndexChanged += new System.EventHandler(this.listBoxSongs_SelectedIndexChanged);
             // 
             // panelLibraryRightMenu
             // 
             this.panelLibraryRightMenu.Controls.Add(this.listBoxMediaType);
             this.panelLibraryRightMenu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelLibraryRightMenu.Location = new System.Drawing.Point(259, 36);
+            this.panelLibraryRightMenu.Location = new System.Drawing.Point(647, 36);
             this.panelLibraryRightMenu.Name = "panelLibraryRightMenu";
-            this.panelLibraryRightMenu.Size = new System.Drawing.Size(173, 217);
+            this.panelLibraryRightMenu.Size = new System.Drawing.Size(173, 450);
             this.panelLibraryRightMenu.TabIndex = 1;
             // 
             // listBoxMediaType
@@ -119,7 +150,7 @@
             "Songs"});
             this.listBoxMediaType.Location = new System.Drawing.Point(0, 0);
             this.listBoxMediaType.Name = "listBoxMediaType";
-            this.listBoxMediaType.Size = new System.Drawing.Size(173, 217);
+            this.listBoxMediaType.Size = new System.Drawing.Size(173, 450);
             this.listBoxMediaType.TabIndex = 3;
             this.listBoxMediaType.SelectedIndexChanged += new System.EventHandler(this.listBoxMediaType_SelectedIndexChanged);
             // 
@@ -131,7 +162,7 @@
             this.panelLibraryTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLibraryTopBar.Location = new System.Drawing.Point(0, 0);
             this.panelLibraryTopBar.Name = "panelLibraryTopBar";
-            this.panelLibraryTopBar.Size = new System.Drawing.Size(432, 36);
+            this.panelLibraryTopBar.Size = new System.Drawing.Size(820, 36);
             this.panelLibraryTopBar.TabIndex = 0;
             // 
             // buttonSearch
@@ -140,7 +171,7 @@
             this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonSearch.FlatAppearance.BorderSize = 0;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Location = new System.Drawing.Point(346, 8);
+            this.buttonSearch.Location = new System.Drawing.Point(179, 8);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(20, 20);
             this.buttonSearch.TabIndex = 2;
@@ -152,7 +183,7 @@
             this.textBoxSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.textBoxSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(179, 4);
+            this.textBoxSearch.Location = new System.Drawing.Point(12, 4);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(161, 26);
             this.textBoxSearch.TabIndex = 1;
@@ -164,7 +195,7 @@
             this.buttonControls.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonControls.FlatAppearance.BorderSize = 0;
             this.buttonControls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonControls.Location = new System.Drawing.Point(396, 0);
+            this.buttonControls.Location = new System.Drawing.Point(784, 0);
             this.buttonControls.Name = "buttonControls";
             this.buttonControls.Size = new System.Drawing.Size(36, 36);
             this.buttonControls.TabIndex = 0;
@@ -180,9 +211,10 @@
             this.panelControls.Controls.Add(this.buttonPrevious);
             this.panelControls.Controls.Add(this.buttonNext);
             this.panelControls.Controls.Add(this.buttonLibrary);
-            this.panelControls.Location = new System.Drawing.Point(374, 259);
+            this.panelControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControls.Location = new System.Drawing.Point(0, 0);
             this.panelControls.Name = "panelControls";
-            this.panelControls.Size = new System.Drawing.Size(418, 253);
+            this.panelControls.Size = new System.Drawing.Size(820, 486);
             this.panelControls.TabIndex = 2;
             // 
             // labelArtistAlbum
@@ -254,7 +286,7 @@
             this.buttonLibrary.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.buttonLibrary.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.buttonLibrary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLibrary.Location = new System.Drawing.Point(371, 3);
+            this.buttonLibrary.Location = new System.Drawing.Point(771, 11);
             this.buttonLibrary.Name = "buttonLibrary";
             this.buttonLibrary.Size = new System.Drawing.Size(36, 35);
             this.buttonLibrary.TabIndex = 0;
@@ -270,12 +302,52 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // panelIdle
+            // 
+            this.panelIdle.BackColor = System.Drawing.Color.Black;
+            this.panelIdle.Location = new System.Drawing.Point(579, 76);
+            this.panelIdle.Name = "panelIdle";
+            this.panelIdle.Size = new System.Drawing.Size(200, 100);
+            this.panelIdle.TabIndex = 3;
+            this.panelIdle.Visible = false;
+            // 
+            // contextMenuSongs
+            // 
+            this.contextMenuSongs.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToPlayQueueToolStripMenuItem});
+            this.contextMenuSongs.Name = "contextMenuSongs";
+            this.contextMenuSongs.Size = new System.Drawing.Size(174, 26);
+            this.contextMenuSongs.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuSongs_Opening);
+            // 
+            // addToPlayQueueToolStripMenuItem
+            // 
+            this.addToPlayQueueToolStripMenuItem.Name = "addToPlayQueueToolStripMenuItem";
+            this.addToPlayQueueToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.addToPlayQueueToolStripMenuItem.Text = "Add to Play Queue";
+            this.addToPlayQueueToolStripMenuItem.Click += new System.EventHandler(this.addToPlayQueueToolStripMenuItem_Click);
+            // 
+            // contextMenuAlbumInfo
+            // 
+            this.contextMenuAlbumInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToPlayQueueToolStripMenuItem1});
+            this.contextMenuAlbumInfo.Name = "contextMenuAlbumInfo";
+            this.contextMenuAlbumInfo.Size = new System.Drawing.Size(174, 26);
+            this.contextMenuAlbumInfo.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuAlbumInfo_Opening);
+            // 
+            // addToPlayQueueToolStripMenuItem1
+            // 
+            this.addToPlayQueueToolStripMenuItem1.Name = "addToPlayQueueToolStripMenuItem1";
+            this.addToPlayQueueToolStripMenuItem1.Size = new System.Drawing.Size(173, 22);
+            this.addToPlayQueueToolStripMenuItem1.Text = "Add to Play Queue";
+            this.addToPlayQueueToolStripMenuItem1.Click += new System.EventHandler(this.addToPlayQueueToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(820, 486);
+            this.Controls.Add(this.panelIdle);
             this.Controls.Add(this.panelControls);
             this.Controls.Add(this.panelLibrary);
             this.Controls.Add(this.mediaPlayer);
@@ -285,11 +357,14 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).EndInit();
             this.panelLibrary.ResumeLayout(false);
+            this.panelLibraryContent.ResumeLayout(false);
             this.panelLibraryRightMenu.ResumeLayout(false);
             this.panelLibraryTopBar.ResumeLayout(false);
             this.panelLibraryTopBar.PerformLayout();
             this.panelControls.ResumeLayout(false);
             this.panelControls.PerformLayout();
+            this.contextMenuSongs.ResumeLayout(false);
+            this.contextMenuAlbumInfo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -314,6 +389,13 @@
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Label labelArtistAlbum;
         private System.Windows.Forms.Label labelSongName;
+        private System.Windows.Forms.Panel panelLibraryContent;
+        private PlaylistsView playlistsView1;
+        private System.Windows.Forms.Panel panelIdle;
+        private System.Windows.Forms.ContextMenuStrip contextMenuSongs;
+        private System.Windows.Forms.ToolStripMenuItem addToPlayQueueToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuAlbumInfo;
+        private System.Windows.Forms.ToolStripMenuItem addToPlayQueueToolStripMenuItem1;
     }
 }
 

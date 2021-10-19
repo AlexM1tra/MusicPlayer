@@ -130,6 +130,9 @@
   <data name="previous_track_icon_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\previous_track_icon_black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="music_note_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\music_note_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="shuffle_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shuffle_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,7 +166,7 @@
   <data name="album_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\album_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="music_note_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\music_note_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="plus_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plus_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

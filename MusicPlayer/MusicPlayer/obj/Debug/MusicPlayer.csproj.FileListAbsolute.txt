@@ -17,3 +17,8 @@ H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.pdb
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\TagLibSharp.xml
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Album.resources
 H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.AlbumInfo.resources
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.PlaylistsView.resources
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.PlayQueue.resources
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\Newtonsoft.Json.dll
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\bin\Debug\Newtonsoft.Json.xml
+H:\Alex\CSharp\Ada\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.Input.resources

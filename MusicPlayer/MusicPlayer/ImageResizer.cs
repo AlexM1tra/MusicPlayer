@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MusicPlayer
 {
-    class ImageResizer
+    class ImageProcessor
     {
         public static Bitmap ResizeImage(Image image, int width)
         {
@@ -72,6 +72,32 @@ namespace MusicPlayer
                 }
             }
             return output;
+        }
+
+        public static bool shouldUseWhite(Bitmap image, Rectangle rect)
+        {
+            if (rect.Width > image.Width || rect.Height > image.Height)
+            {
+                return false;
+            }
+            int redTotal = 0;
+            int greenTotal = 0;
+            int blueTotal = 0;
+            int numberOfPoints = 0;
+            Color currentColor;
+            for (int x = rect.Left; x < rect.Left + rect.Width; x++)
+            {
+                for (int y = rect.Top; y < rect.Top + rect.Height; y++)
+                {
+                    currentColor = image.GetPixel(x, y);
+                    redTotal += currentColor.R;
+                    greenTotal += currentColor.G;
+                    blueTotal += currentColor.B;
+                    numberOfPoints++;
+                }
+            }
+            Color averageColor = Color.FromArgb(redTotal / numberOfPoints, greenTotal / numberOfPoints, blueTotal / numberOfPoints);
+            return (averageColor.R * 0.299 + averageColor.G * 0.587 + averageColor.B * 0.114) <= 186;
         }
     }
 }
