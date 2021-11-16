@@ -34,7 +34,9 @@ namespace MusicPlayer
                             if (Directory.Exists(album))
                             {
                                 IEnumerable<string> songs = Directory.GetFiles(album)
-                                    .Where(file => file.ToLower().EndsWith(".mp3") || file.ToLower().EndsWith(".m4a") || file.ToLower().EndsWith(".wav"));
+                                    .Where(file => file.ToLower().EndsWith(".mp3") 
+                                                    || file.ToLower().EndsWith(".m4a") 
+                                                    || file.ToLower().EndsWith(".wav"));
                                 if (songs.Count() > 0)
                                 {
                                     string albumWithoutPath = withoutPath(album);

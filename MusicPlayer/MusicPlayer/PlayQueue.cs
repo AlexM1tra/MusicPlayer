@@ -53,7 +53,8 @@ namespace MusicPlayer
 
         public void setPlayCallback(Action<List<string>, bool> callback)
         {
-            contextMenuPlay.Click += new EventHandler((sender, e) => callback(new List<string>() { this.songs[listboxQueue.SelectedIndex] }, false));
+            contextMenuPlay.Click += new EventHandler(
+                                            (sender, e) => callback(new List<string>() { this.songs[listboxQueue.SelectedIndex] }, false));
         }
 
         public void setSelectedIndex(int index)

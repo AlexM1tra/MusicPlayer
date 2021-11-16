@@ -91,7 +91,8 @@ namespace MusicPlayer
                 album.setClickHandler(Album_Click);
                 panelLibraryAlbums.Controls.Add(album);
             }
-            listBoxSongs.DoubleClick += new EventHandler((sender, e) => playSong(MusicLibrary.Get().getSongList()[listBoxSongs.SelectedIndex]));
+            listBoxSongs.DoubleClick += new EventHandler(
+                                                (sender, e) => playSong(MusicLibrary.Get().getSongList()[listBoxSongs.SelectedIndex]));
             listBoxSongs.ContextMenuStrip = contextMenuSongs;
             List<string> songs = MusicLibrary.Get().getAllSongs();
             listBoxSongs.Items.AddRange(songs.ToArray());
@@ -133,7 +134,9 @@ namespace MusicPlayer
                 this.previousButtonIsLight = false;
                 this.songInfoIsLight = false;
                 this.libraryButtonIsLight = false;
-                this.playPauseButton.BackgroundImage = this.playPauseButton.Tag.ToString() == "Play" ? Properties.Resources.play_icon : Properties.Resources.pause_icon;
+                this.playPauseButton.BackgroundImage = this.playPauseButton.Tag.ToString() == "Play" 
+                                                                ? Properties.Resources.play_icon 
+                                                                : Properties.Resources.pause_icon;
                 buttonNext.BackgroundImage = Properties.Resources.next_track_icon_black;
                 buttonPrevious.BackgroundImage = Properties.Resources.previous_track_icon_black;
                 labelSongName.ForeColor = Color.Black;
@@ -142,25 +145,56 @@ namespace MusicPlayer
                 return;
             }
             int middleLine = this.currentBackground.Height / 2;
-            this.playPauseIsLight = ImageProcessor.shouldUseWhite(new Bitmap(this.currentBackground), new Rectangle(new Point(this.playPauseButton.Left, middleLine - this.playPauseButton.Height / 2), this.playPauseButton.Size));
+            this.playPauseIsLight = 
+                ImageProcessor.shouldUseWhite(new Bitmap(this.currentBackground), 
+                                                new Rectangle(
+                                                    new Point(this.playPauseButton.Left, middleLine - this.playPauseButton.Height / 2), 
+                                                    this.playPauseButton.Size));
             if (this.playPauseButton.Tag.ToString() == "Play")
             {
-                this.playPauseButton.BackgroundImage = playPauseIsLight ? Properties.Resources.play_icon_light : Properties.Resources.play_icon;
+                this.playPauseButton.BackgroundImage = playPauseIsLight 
+                                                            ? Properties.Resources.play_icon_light 
+                                                            : Properties.Resources.play_icon;
             }
             else
             {
-                this.playPauseButton.BackgroundImage = playPauseIsLight ? Properties.Resources.pause_icon_light : Properties.Resources.pause_icon;
+                this.playPauseButton.BackgroundImage = playPauseIsLight 
+                                                            ? Properties.Resources.pause_icon_light 
+                                                            : Properties.Resources.pause_icon;
             }
-            this.nextButtonIsLight = ImageProcessor.shouldUseWhite(new Bitmap(this.currentBackground), new Rectangle(new Point(buttonNext.Left, middleLine - buttonNext.Height / 2), buttonNext.Size));
-            buttonNext.BackgroundImage = nextButtonIsLight ? Properties.Resources.next_track_icon_white : Properties.Resources.next_track_icon_black;
-            this.previousButtonIsLight = ImageProcessor.shouldUseWhite(new Bitmap(this.currentBackground), new Rectangle(new Point(buttonPrevious.Left, middleLine - buttonPrevious.Height / 2), buttonPrevious.Size));
-            buttonPrevious.BackgroundImage = previousButtonIsLight ? Properties.Resources.previous_track_icon_white : Properties.Resources.previous_track_icon_black;
-            this.songInfoIsLight = ImageProcessor.shouldUseWhite(new Bitmap(this.currentBackground), new Rectangle(new Point(Math.Min(labelSongName.Left, labelArtistAlbum.Left), middleLine + panelControls.Height * 4 / 14), new Size(Math.Max(labelSongName.Width, labelArtistAlbum.Width), labelSongName.Height + labelArtistAlbum.Height + 10)));
+            this.nextButtonIsLight = 
+                ImageProcessor.shouldUseWhite(
+                                new Bitmap(this.currentBackground), 
+                                new Rectangle(new Point(buttonNext.Left, middleLine - buttonNext.Height / 2), buttonNext.Size));
+            buttonNext.BackgroundImage = nextButtonIsLight 
+                                            ? Properties.Resources.next_track_icon_white 
+                                            : Properties.Resources.next_track_icon_black;
+
+            this.previousButtonIsLight = 
+                ImageProcessor.shouldUseWhite(
+                                new Bitmap(this.currentBackground), 
+                                new Rectangle(
+                                    new Point(buttonPrevious.Left, middleLine - buttonPrevious.Height / 2), 
+                                                buttonPrevious.Size));
+            buttonPrevious.BackgroundImage = previousButtonIsLight 
+                                                ? Properties.Resources.previous_track_icon_white 
+                                                : Properties.Resources.previous_track_icon_black;
+
+            this.songInfoIsLight = 
+                ImageProcessor.shouldUseWhite(
+                                new Bitmap(this.currentBackground), 
+                                new Rectangle(
+                                    new Point(Math.Min(labelSongName.Left, labelArtistAlbum.Left), middleLine + panelControls.Height * 4 / 14), 
+                                    new Size(Math.Max(labelSongName.Width, labelArtistAlbum.Width), labelSongName.Height + labelArtistAlbum.Height + 10)));
             labelSongName.ForeColor = this.songInfoIsLight ? Color.White : Color.Black;
             labelArtistAlbum.ForeColor = this.songInfoIsLight ? Color.White : Color.Black;
+
             Color libraryButtonBackground = new Bitmap(this.currentBackground).GetPixel(panelControls.Width - buttonLibrary.Width, 10);
-            this.libraryButtonIsLight = (libraryButtonBackground.R * 0.299 + libraryButtonBackground.G * 0.587 + libraryButtonBackground.B * 0.114) <= 186;
-            buttonLibrary.BackgroundImage = this.libraryButtonIsLight ? Properties.Resources.library_icon_light : Properties.Resources.library_icon;
+            this.libraryButtonIsLight = 
+                (libraryButtonBackground.R * 0.299 + libraryButtonBackground.G * 0.587 + libraryButtonBackground.B * 0.114) <= 186;
+            buttonLibrary.BackgroundImage = this.libraryButtonIsLight 
+                                                ? Properties.Resources.library_icon_light 
+                                                : Properties.Resources.library_icon;
         }
 
         /*
@@ -182,7 +216,14 @@ namespace MusicPlayer
             }
             if (oldArtistAndAlbum != album.Artist() + "\\" + album.Title())
             {
-                AlbumInfo albumInfo = new AlbumInfo(album.Title(), album.Artist(), MusicLibrary.Get().getSongs(album.Artist(), album.Title()), playSoloSong, playAlbum, album.AlbumArtwork());
+                AlbumInfo albumInfo = new AlbumInfo(album.Title(), 
+                                                    album.Artist(), 
+                                                    MusicLibrary.Get().getSongs(
+                                                            album.Artist(), 
+                                                            album.Title()), 
+                                                    playSoloSong, 
+                                                    playAlbum, 
+                                                    album.AlbumArtwork());
                 albumInfo.Dock = DockStyle.Fill;
                 albumInfo.setContextMenuStrip(contextMenuAlbumInfo);
                 listBoxMediaType.Visible = false;
@@ -231,10 +272,17 @@ namespace MusicPlayer
             {
                 if (img != null)
                 {
-                    currentBackground = ImageProcessor.CropCenteredImage(panelControls, ImageProcessor.ResizeImage(Image.FromStream(new MemoryStream((byte[])(img.Data.Data))), panelControls.Width));
+                    currentBackground = 
+                        ImageProcessor.CropCenteredImage(panelControls, 
+                                            ImageProcessor.ResizeImage(
+                                                            Image.FromStream(
+                                                                    new MemoryStream((byte[])(img.Data.Data))), 
+                                                                                    panelControls.Width));
                 }
             }
-            List<bool> newBackgroundHash = this.currentBackground == null ? new List<bool>() : ImageProcessor.HashImage(new Bitmap(this.currentBackground));
+            List<bool> newBackgroundHash = this.currentBackground == null 
+                                                ? new List<bool>() 
+                                                : ImageProcessor.HashImage(new Bitmap(this.currentBackground));
             if (backgroundHash.Count == newBackgroundHash.Count)
             {
                 for (int i = 0; i < backgroundHash.Count; i++)
@@ -264,7 +312,9 @@ namespace MusicPlayer
 
         private void playAlbum(string artistalbum, bool shouldShuffle)
         {
-            this.playQueue = new List<string>(MusicLibrary.Get().getSongs(artistalbum.Split('\\')[0], artistalbum.Split('\\')[1]));
+            this.playQueue = new List<string>(
+                                MusicLibrary.Get().getSongs(
+                                    artistalbum.Split('\\')[0], artistalbum.Split('\\')[1]));
             this.playQueuePointer = 0;
             if (shouldShuffle)
             {
@@ -328,17 +378,23 @@ namespace MusicPlayer
         {
             if (e.newState == 2) // Paused.
             {
-                playPauseButton.BackgroundImage = this.playPauseIsLight ? Properties.Resources.play_icon_light : Properties.Resources.play_icon;
+                playPauseButton.BackgroundImage = this.playPauseIsLight 
+                                                    ? Properties.Resources.play_icon_light 
+                                                    : Properties.Resources.play_icon;
                 playPauseButton.Tag = "Play";
             }
             else if (e.newState == 3) // Playing.
             {
-                playPauseButton.BackgroundImage = this.playPauseIsLight ? Properties.Resources.pause_icon_light : Properties.Resources.pause_icon;
+                playPauseButton.BackgroundImage = this.playPauseIsLight 
+                                                    ? Properties.Resources.pause_icon_light 
+                                                    : Properties.Resources.pause_icon;
                 playPauseButton.Tag = "Pause";
             }
             else if (e.newState == 8 && playQueue.Count > 0) // 8 = Media Ended
             {
-                playPauseButton.BackgroundImage = this.playPauseIsLight ? Properties.Resources.play_icon_light : Properties.Resources.play_icon;
+                playPauseButton.BackgroundImage = this.playPauseIsLight 
+                                                    ? Properties.Resources.play_icon_light 
+                                                    : Properties.Resources.play_icon;
                 playPauseButton.Tag = "Play";
                 drawBackground();
                 playNextSong();
@@ -374,7 +430,8 @@ namespace MusicPlayer
             }
             if (mediaPlayer.Ctlcontrols.currentItem != null)
             {
-                float angle = (float)(360 * mediaPlayer.Ctlcontrols.currentPosition / mediaPlayer.Ctlcontrols.currentItem.duration);
+                float angle = 
+                    (float)(360 * mediaPlayer.Ctlcontrols.currentPosition / mediaPlayer.Ctlcontrols.currentItem.duration);
                 if (!float.IsNaN(angle))
                 {
                     this.g.DrawArc(this.playPauseIsLight ? this.lightPen : this.darkPen, this.progressRect, -90, angle);
@@ -400,12 +457,14 @@ namespace MusicPlayer
         {
             Point center = new Point(panelControls.Width / 2, panelControls.Height / 2);
             int radius = Math.Min(panelControls.Width, panelControls.Height) * 4 / 14;
-            Rectangle innerRect = new Rectangle(center.X - radius + 12, center.Y - radius + 12, (2 * radius) - 24, (2 * radius) - 24);
+            Rectangle innerRect = 
+                new Rectangle(center.X - radius + 12, center.Y - radius + 12, (2 * radius) - 24, (2 * radius) - 24);
             double xSquaredPlusYSquared = (e.X - center.X) * (e.X - center.X) + (e.Y - center.Y) * (e.Y - center.Y);
             if (xSquaredPlusYSquared < ((radius + 20) * (radius + 20)))
             {
                 Vector newVector = new Vector(e.X - center.X, e.Y - center.Y);
-                mediaPlayer.Ctlcontrols.currentPosition = newVector.calculateAngleFromNormal() / 360 * mediaPlayer.Ctlcontrols.currentItem.duration;
+                mediaPlayer.Ctlcontrols.currentPosition = 
+                    newVector.calculateAngleFromNormal() / 360 * mediaPlayer.Ctlcontrols.currentItem.duration;
                 drawBackground();
             }
         }
